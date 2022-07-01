@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`idOrder`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla apiprueba.orders: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla apiprueba.orders: ~14 rows (aproximadamente)
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 INSERT INTO `orders` (`idOrder`, `idUser`, `OrderNumber`, `DateTime`, `ProviderName`, `DateCreated`, `Observation`, `TotalValue`, `deleted`, `Status`) VALUES
 	(1, 1, 'abc123', '2022-06-28 23:50:55', 'jhonathan rodriguez', NULL, 'hola como estas', 13.000000, 1, 0),
@@ -46,7 +46,7 @@ INSERT INTO `orders` (`idOrder`, `idUser`, `OrderNumber`, `DateTime`, `ProviderN
 	(9, 3, '567fg', '2022-06-22 00:00:00', 'proveedor 2', NULL, NULL, NULL, 1, 0),
 	(10, 1, '235', '2022-06-28 00:00:00', 'pedrito', NULL, NULL, 5.000000, 0, 5),
 	(11, 3, '3453', '2022-06-29 00:00:00', 'jhonathan', NULL, NULL, NULL, 1, 0),
-	(12, 3, '3453', '2022-06-29 00:00:00', 'jhonathan', NULL, NULL, 8.000000, 0, 0),
+	(12, 3, '3453', '2022-06-29 00:00:00', 'jhonathan', NULL, NULL, 246.000000, 0, 0),
 	(13, 4, 'abc 232', '2022-06-28 00:00:00', 'Jhonathan', NULL, 'hola que tal ', NULL, 1, NULL),
 	(14, 2, '3445345', '2022-06-29 00:00:00', 'hola', NULL, NULL, NULL, 1, 0);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
@@ -66,18 +66,20 @@ CREATE TABLE IF NOT EXISTS `ordersproducts` (
   `Mark` varchar(50) NOT NULL,
   `Status` int(11) NOT NULL DEFAULT '0',
   `deleted` int(11) NOT NULL DEFAULT '0',
+  `NLote` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`IdOrdersProducts`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla apiprueba.ordersproducts: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `ordersproducts` DISABLE KEYS */;
-INSERT INTO `ordersproducts` (`IdOrdersProducts`, `IdOrder`, `ValueUnit`, `Unit`, `Description`, `SKU`, `Quantity`, `QtyBox`, `Weight`, `Volumen`, `Mark`, `Status`, `deleted`) VALUES
-	(1, 1, 123.00, '12', 'esta es  una desci', 'dfsdf232', 12, 1, 12.00, 12, 'marca', 0, 0),
-	(2, 1, 45.00, '2', 'dfsdfsf', '3dsf43', 3, 12, 12.00, 12, 'marcados', 0, 0),
-	(3, 13, 2.00, '2', 'esta es  otra descripcion', '2', 2, 2, 2.00, 2, 'sfsdf', 0, 0),
-	(4, 13, 3.00, '3', '3', '3', 3, 3, 3.00, 3, 'bdfgdfg', 0, 1),
-	(5, 10, 1.00, '1', '1', '1', 1, 1, 1.00, 1, 'dsfsdfsdf', 0, 0),
-	(6, 10, 2.00, '2', '2', 'dfdfg', 2, 2, 2.00, 2, 'dsfsdf', 0, 0);
+INSERT INTO `ordersproducts` (`IdOrdersProducts`, `IdOrder`, `ValueUnit`, `Unit`, `Description`, `SKU`, `Quantity`, `QtyBox`, `Weight`, `Volumen`, `Mark`, `Status`, `deleted`, `NLote`) VALUES
+	(1, 1, 123.00, '12', 'esta es  una desci', 'dfsdf232', 12, 1, 12.00, 12, 'marca', 0, 0, NULL),
+	(2, 1, 45.00, '2', 'dfsdfsf', '3dsf43', 3, 12, 12.00, 12, 'marcados', 0, 0, NULL),
+	(3, 13, 2.00, '2', 'esta es  otra descripcion', '2', 2, 2, 2.00, 2, 'sfsdf', 0, 0, NULL),
+	(4, 13, 3.00, '3', '3', '3', 3, 3, 3.00, 3, 'bdfgdfg', 0, 1, NULL),
+	(5, 10, 1.00, '1', '1', '1', 1, 1, 1.00, 1, 'dsfsdfsdf', 0, 0, '1234'),
+	(6, 10, 2.00, '2', '2', 'dfdfg', 2, 2, 2.00, 2, 'dsfsdf', 0, 0, NULL),
+	(7, 12, 123.00, '1', 'unidad de prueba', 'ABC123', 2, 1, 123.00, 12, 'Nueva', 0, 0, NULL);
 /*!40000 ALTER TABLE `ordersproducts` ENABLE KEYS */;
 
 -- Volcando estructura para tabla apiprueba.users
