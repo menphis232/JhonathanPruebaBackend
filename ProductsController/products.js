@@ -49,8 +49,8 @@ class ProductsController {
        
 
         req.body.products.forEach((element,index) => {
-            let insertQuery = 'INSERT INTO ordersproducts (IdOrder,ValueUnit,Unit,Description,SKU,Quantity,QtyBox,Weight,Volumen,Mark) VALUES (?,?,?,?,?,?,?,?,?,?)';
-            let query = mysql.format(insertQuery,[req.body.idOrder,element.ValueUnit,element.Unit,element.Description,element.SKU,element.Quantity,element.QtyBox,element.Weight,element.Volumen,element.Mark]);
+            let insertQuery = 'INSERT INTO ordersproducts (IdOrder,ValueUnit,Unit,Description,SKU,Quantity,QtyBox,Weight,Volumen,Mark,NLote) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+            let query = mysql.format(insertQuery,[req.body.idOrder,element.ValueUnit,element.Unit,element.Description,element.SKU,element.Quantity,element.QtyBox,element.Weight,element.Volumen,element.Mark,element.NLote]);
             pool.query(query,(err, response) => {
                 if(err) {
                     console.error(err);
@@ -76,8 +76,8 @@ class ProductsController {
         req.body.products.forEach((element,index) => {
 
             if(element.IdOrdersProducts){
-                let insertQuery = 'UPDATE ordersproducts SET ValueUnit=?,Unit=?,Description=?,Quantity=?,QtyBox=?,Weight=?,Volumen=?,Mark=? WHERE IdOrdersProducts=?';
-                let query = mysql.format(insertQuery,[element.ValueUnit,element.Unit,element.Description,element.Quantity,element.QtyBox,element.Weight,element.Volumen,element.Mark,element.IdOrdersProducts]);
+                let insertQuery = 'UPDATE ordersproducts SET ValueUnit=?,Unit=?,Description=?,Quantity=?,QtyBox=?,Weight=?,Volumen=?,Mark=?,NLote=? WHERE IdOrdersProducts=?';
+                let query = mysql.format(insertQuery,[element.ValueUnit,element.Unit,element.Description,element.Quantity,element.QtyBox,element.Weight,element.Volumen,element.Mark,element.NLote,element.IdOrdersProducts]);
                 pool.query(query,(err, response) => {
                     if(err) {
                         console.error(err);
@@ -85,8 +85,8 @@ class ProductsController {
                     }
                 });
             }else{
-                let insertQuery = 'INSERT INTO ordersproducts (IdOrder,ValueUnit,Unit,Description,SKU,Quantity,QtyBox,Weight,Volumen,Mark) VALUES (?,?,?,?,?,?,?,?,?,?)';
-                let query = mysql.format(insertQuery,[req.body.idOrder,element.ValueUnit,element.Unit,element.Description,element.SKU,element.Quantity,element.QtyBox,element.Weight,element.Volumen,element.Mark]);
+                let insertQuery = 'INSERT INTO ordersproducts (IdOrder,ValueUnit,Unit,Description,SKU,Quantity,QtyBox,Weight,Volumen,Mark,NLote) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+                let query = mysql.format(insertQuery,[req.body.idOrder,element.ValueUnit,element.Unit,element.Description,element.SKU,element.Quantity,element.QtyBox,element.Weight,element.Volumen,element.Mark,element.NLote]);
                 pool.query(query,(err, response) => {
                     if(err) {
                         console.error(err);
